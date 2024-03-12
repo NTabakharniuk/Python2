@@ -1,104 +1,126 @@
 #1
-def print_song():
-    print("Twinkle, twinkle, little star,")
-    print("    How I wonder what you are!")
-    print("        Up above the world so high,")
-    print("        Like a diamond in the sky.")
-    print("Twinkle, twinkle, little star,")
-    print("    How I wonder what you are!")
-print_song()
+string = "Twinkle, twinkle, little star, \n\tHow I wonder what you are! \n\t\t Up above the world so high, \n\t\t Like a diamond in the sky.  \nTwinkle, twinkle, little star, \n\tHow I wonder what you are"
 
-#2
-import math
+print(string)
 
-def calculate_area(radius):
-    area = math.pi * radius ** 2
-    return area
+# 2
+radius = float(input("Введіть радіус кола: "))
 
-def main():
-    radius = float(input("Введіть радіус кола: "))
-    area = calculate_area(radius)
-    print("Площа кола з радіусом", radius, "дорівнює", area)
-    
-if __name__ == "__main__":
-    main()
+area = 3.14159 * radius ** 2
 
- #3
+print("Площа кола з радіусом", radius, "дорівнює", area)
+
+# 3
 color_list = ["Red", "Green", "White", "Black"]
 
-first_color = color_list[0]
-last_color = color_list[-1]
-
-print("Перший колір:", first_color)
-print("Останній колір:", last_color)
+print("Перший колір:", color_list[0])
+print("Останній колір:", color_list[-1])
 
 
-#4
-def calculate_value(n):
-    nn = int(str(n) * 2) 
-    nnn = int(str(n) * 3) 
-    return n + nn + nnn
-
+# 4
 n = 5
-result = calculate_value(n)
-print(result)
+
+result = n + int(str(n) * 2) + int(str(n) * 3)
+
+print("Результат:", result)
 
 
-#5
+# 5
 numbers = [386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345, 399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217, 815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717, 958,743, 527]
 
-for number in numbers:
-    if number == 237:
-        break 
-    if number % 2 == 0:
-        print(number)
+for num in numbers:
+    if num == 237:
+        break
+    if num % 2 == 0:
+        print(num)
 
 
-#7
+# #6
+# sequence = "01010101"
+
+# # Перевірка чи слідують за кожними нулями однакові послідовності одиниць
+# result = all(sequence[i] == sequence[i+1] for i in range(0, len(sequence)-1, 2))
+
+# # Виведення результату
+# print("Результат:", result)
+
+# 7
 m = 16
-n = 56
-for i in range (-n, n+1, m):
+n = m * 100
+
+for i in range(-n, n+1, m):
     if i % 2 == 0:
         print(i)
 
+# 8
+m = 8
 
+combinations = 25 ** m
 
-#8
-m = 16
-combinations = 25  
-
-for i in range(m - 1):
-    total_combinations *= 24
-
-print(combinations)
+print("Кількість можливих комбінацій:", combinations)
 
 #9
+my_list = [1, 2, 3, 4, 5]
 
-# а.)
-my_list = [1, 2, 3]
+# a)
 my_list.extend([3, 6, 7])
-print("а.) Розширений список:", my_list)
 
-# б.)
-my_list[1] = 33333
-print("б.) Список зі зміненим другим елементом:", my_list)
+# б)
+my_list.insert(1, 33333)
 
-# в.)
+# в)
 my_list.reverse()
-print("в.) Список у зворотньому порядку:", my_list)
 
-# г.)
+# г)
 my_list.append(3)
-print("г.) Список з доданим числом 3 в кінці:", my_list)
 
-# д.)
+# д)
 my_list.remove(3)
-print("д.) Список з видаленим першим елементом 3:", my_list)
 
-# е.)
+# е)
 my_list.sort()
-print("е.) Список у порядку збільшення:", my_list)
 
-# ж.)
+# ж)
 my_list.clear()
-print("ж.) Очищений список:", my_list)
+
+print(my_list)
+
+# 10
+user_info = {
+    "ID": 1,
+    "Прізвище": "Прізвище",
+    "Ім’я": "Ім'я",
+    "Група": "Група",
+    "Курс": "Курс",
+    "Книги (борг)": [],
+    "Статистика книг": []
+}
+
+while True:
+    print("Щоб вийти введіть 0")
+    print("Щоб переглянути карту читача введіть 1")
+    print("Щоб взяти книгу введіть 2")
+    print("Щоб повернути книгу введіть 3")
+
+    choice = int(input("Ваш вибір: "))
+
+    if choice == 0:
+        break
+    elif choice == 1:
+        print(user_info)
+    elif choice == 2:
+        book = input("Введіть назву книги, яку бажаєте взяти: ")
+        user_info["Книги (борг)"].append(book)
+    elif choice == 3:
+        if len(user_info["Книги (борг)"]) == 0:
+            print("Ви не маєте жодної книги у боргу.")
+        else:
+            print("Книги у боргу:", user_info["Книги (борг)"])
+            book_to_return = input("Введіть назву книги, яку бажаєте повернути: ")
+            # Перевірка наявності книги у боргу
+            if book_to_return in user_info["Книги (борг)"]:
+                user_info["Книги (борг)"].remove(book_to_return)
+                user_info["Статистика книг"].append(book_to_return)
+                print("Книга успішно повернута.")
+            else:
+                print("Книга не була взята у борг.")
