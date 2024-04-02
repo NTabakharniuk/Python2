@@ -26,9 +26,9 @@ class Clementine(Orange, Mandarin):
     pass
 
 class Penterin(Mandarin, Grapefruit):
-    pass
+   pass
 
-class Orlando(Penterin, Grapefruit):
+class Orlando(Grapefruit, Clementine):
     pass
 
 orlando = Orlando()
